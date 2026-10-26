@@ -17,7 +17,8 @@ public class ObstacleSphere : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rend = GetComponent<Renderer>();
+        // 겉모양이 자식 오브젝트에 있어도 화면 안 판정을 할 수 있도록 자식까지 찾는다
+        rend = GetComponentInChildren<Renderer>();
     }
 
     void OnEnable()

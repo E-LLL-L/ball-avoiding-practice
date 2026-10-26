@@ -158,6 +158,11 @@ MonoBehaviour:
   awaySpeed: 12
   awayUpSpeed: 6
   spinSpeed: 20
+  fallGameOverHeight: -1
+  fallBlastViewportY: -0.03
+  fallBlastDistance: 12
+  fallTimeToCamera: 1.2
+  fallEffectMaxWait: 5
 --- !u!54 &28283846
 Rigidbody:
   m_ObjectHideFlags: 0
