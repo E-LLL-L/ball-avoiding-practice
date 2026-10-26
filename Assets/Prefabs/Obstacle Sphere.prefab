@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5185003253415654917}
   - component: {fileID: 8680401780732222251}
   - component: {fileID: 2991557719357070158}
+  - component: {fileID: 522588141996037091}
   m_Layer: 0
   m_Name: Obstacle Sphere
   m_TagString: Obstacle
@@ -140,3 +141,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &522588141996037091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3989325219128899965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66713164598676b4d820949ce7f6ef0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObstacleSphere
+  fallenHeight: -1

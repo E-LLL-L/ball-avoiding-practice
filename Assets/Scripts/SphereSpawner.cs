@@ -19,6 +19,8 @@ public class SphereSpawner : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.IsGameOver) return;
+
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
         {
@@ -33,8 +35,6 @@ public class SphereSpawner : MonoBehaviour
             Random.Range(-spawnRange, spawnRange),
             spawnHeight,
             Random.Range(-spawnRange, spawnRange));
-        GameObject sphere = Instantiate(spherePrefab, position, Quaternion.identity);
-        // 바닥 밖으로 떨어진 Sphere는 정리
-        Destroy(sphere, 20f);
+        Instantiate(spherePrefab, position, Quaternion.identity);
     }
 }
