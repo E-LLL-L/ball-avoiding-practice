@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("날아갈 때 회전 속도 (라디안/초)")]
     public float spinSpeed = 20f;
 
+    [Tooltip("이 높이보다 아래로 떨어지면 Ground 밖으로 떨어진 것으로 보고 Game Over")]
+    public float fallGameOverHeight = -1f;
+
     Rigidbody rb;
     Renderer rend;
     Vector3 moveInput;
@@ -45,6 +48,13 @@ public class PlayerController : MonoBehaviour
             float flightTime = Time.time - launchTime;
             if ((flightTime > 0.3f && !CameraVisibility.IsVisible(rend)) || flightTime > 6f)
                 gameObject.SetActive(false);
+            return;
+        }
+
+        // Ground 밖으로 떨어지면 Game Over (폭발 없이 그대로 떨어진다)
+        if (transform.position.y < fallGameOverHeight)
+        {
+            TriggerGameOver();
             return;
         }
 
@@ -73,13 +83,18 @@ public class PlayerController : MonoBehaviour
         if (isGameOver) return;
         if (!collision.gameObject.CompareTag("Obstacle")) return;
 
+        TriggerGameOver();
+        Explode();
+    }
+
+    void TriggerGameOver()
+    {
         isGameOver = true;
         moveInput = Vector3.zero;
+        launchTime = Time.time;
 
         Debug.Log("Game Over");
         if (GameManager.Instance != null) GameManager.Instance.GameOver();
-
-        Explode();
     }
 
     void Explode()
